@@ -812,6 +812,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. 使用人员">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用入口和数据范围
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -959,10 +976,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-pending_verification" class="md-nav__link">
+  <a href="#11-admin-notes-pending_verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. pending_verification
+        11. Admin Notes / pending_verification
       
     </span>
   </a>
@@ -1619,6 +1636,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. 使用人员">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用入口和数据范围
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1766,10 +1800,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-pending_verification" class="md-nav__link">
+  <a href="#11-admin-notes-pending_verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. pending_verification
+        11. Admin Notes / pending_verification
       
     </span>
   </a>
@@ -1815,6 +1849,12 @@
 <li>Sales Department：检查全部资料，选择 Confirm 或 Reject。</li>
 <li>Jodoo Admin：处理 workflow、权限、公式或自动化异常。</li>
 </ul>
+<h3 id="_1">使用入口和数据范围<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>Sales - Elastic Update Records</code>：Marketing Department 使用。</li>
+<li><code>Designer - My Elastic Update by Designer</code>：Production Department 使用。</li>
+<li>Designer 的数据范围按 <code>Sales Account = Current User</code> 控制。</li>
+</ul>
 <h2 id="3">3. 当前流程<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Designer Editing</li>
@@ -1830,22 +1870,22 @@
 </ul>
 <h2 id="4">4. 主要字段<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Select Elastic Customer</li>
-<li>Customer Code；Company Name；Responsible Sales；Country(Region)</li>
-<li>Sales Account；Serial No.</li>
+<li><code>Select Elastic Customer</code>：关联 <code>Elastic Customer</code> 表单。</li>
+<li>选择客户后，系统自动带出 Customer Code、Company Name、Responsible Sales 和 Country(Region)。</li>
+<li><code>Sales Account</code>：必填 Member 字段，可选范围来自 Marketing Department。</li>
+<li>Serial No.</li>
 <li>Elastic Type；Description；Elastic Color</li>
 <li>Width；Width Unit；Net Weight (g/m)；Remarks</li>
 <li>全局BOM字符串集合</li>
 <li>Sales Confirmation；Reject Reason；Approval Time</li>
 <li>Common BOM Details</li>
 </ul>
-<p>字段的精确 Jodoo 组件类型、必填设置和关联带出映射如未确认，均为 <code>pending_verification</code>。</p>
+<p>字段左上角红色 <code>*</code> 表示必填字段。下拉字段请按系统当前选项选择。</p>
 <h2 id="5">5. 显示与审核规则<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Sales Confirmation = Confirm：显示 Approval Time。</li>
 <li>Sales Confirmation = Reject：显示 Reject Reason。</li>
 <li>Reject Reason 在 Reject 时必须填写。</li>
-<li>Approval Time 的精确赋值方式为 <code>pending_verification</code>。</li>
 </ul>
 <h2 id="6-common-bom-details">6. Common BOM Details<a class="headerlink" href="#6-common-bom-details" title="Permanent link">&para;</a></h2>
 <p>Designer Department 只填写一份 Common BOM。当前已确认的字段名称包括：</p>
@@ -1857,7 +1897,8 @@
 <li>Quality Reference Type；Quality Reference No.；Light Source</li>
 <li>Remarks；Confirm Status；FBS单行BOM信息打包</li>
 </ul>
-<p>不清楚的 BOM 信息可以留空，但不能猜填。全局 BOM 和单行打包字段由系统使用，普通人员不要修改。</p>
+<p>不清楚的 BOM 信息可以留空，但不能猜填。全局BOM字符串集合、FBS单行BOM信息打包等字段为系统计算/打包字段，请勿手工修改。</p>
+<p>Common BOM Details 会同步到 Elastic Item Master 的 Sample Composition Breakdown (OS) 和 Sample Composition Breakdown (FBS)。字段名称保持一致，同名字段对应同步。</p>
 <h2 id="7-designer">7. Designer 操作步骤<a class="headerlink" href="#7-designer" title="Permanent link">&para;</a></h2>
 <ol>
 <li>打开 Elastic Update by Designer，点击 New。</li>
@@ -1885,11 +1926,12 @@
 <li>Sales Confirmation = Confirm</li>
 <li>Sales Account is not empty</li>
 </ul>
-<p>符合条件后执行 Add Record to Elastic Item Master，并把 Common BOM Details 复制到：</p>
+<p>符合条件后，智能助手 Add Record 到 Elastic Item Master。Common BOM Details 同步到：</p>
 <ul>
 <li>Sample Composition Breakdown (OS)</li>
 <li>Sample Composition Breakdown (FBS)</li>
 </ul>
+<p>字段名称保持一致，同名字段对应同步。</p>
 <h3 id="reject">Reject<a class="headerlink" href="#reject" title="Permanent link">&para;</a></h3>
 <ul>
 <li>不触发 Elastic Item Master 同步。</li>
@@ -1906,15 +1948,8 @@
 <li>Reject 后没有填写 Reject Reason。</li>
 <li>误以为本表会直接修改已有 Elastic Item Master。</li>
 </ul>
-<h2 id="11-pending_verification">11. pending_verification<a class="headerlink" href="#11-pending_verification" title="Permanent link">&para;</a></h2>
-<p>以下内容尚未完整核对，不得臆测：</p>
-<ul>
-<li>未确认字段的精确 Jodoo 组件类型。</li>
-<li>Select Elastic Customer 的完整关联字段映射。</li>
-<li>全局BOM字符串集合和 FBS单行BOM信息打包的精确公式。</li>
-<li>Approval Time 的精确赋值方式。</li>
-<li>Common BOM 到 OS/FBS BOM 的逐字段精确映射。</li>
-</ul>
+<h2 id="11-admin-notes-pending_verification">11. Admin Notes / pending_verification<a class="headerlink" href="#11-admin-notes-pending_verification" title="Permanent link">&para;</a></h2>
+<p>员工操作所需规则已在本手册说明。Actions、Fields、Data Permission 等后台管理配置不在员工手册范围内；管理员维护时请以系统当前配置为准，不要自行推断。</p>
 <h2 id="12">12. 版本记录<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1925,6 +1960,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>2026-06-22</td>
+<td>0.3</td>
+<td>精简员工说明；确认使用入口、Sales Account 范围、必填标识、Confirm/Reject 显示规则及 Common BOM 同名字段同步。</td>
+</tr>
 <tr>
 <td>2026-06-21</td>
 <td>0.2</td>
