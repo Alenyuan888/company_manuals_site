@@ -1,5 +1,13 @@
 :root {
-  --md-primary-fg-color: #334e8a;
+  --md-primary-fg-color: #2457a6;
+  --cm-sales: #2563eb;
+  --cm-production: #ea580c;
+  --cm-warehouse: #16a34a;
+  --cm-dyeing: #7c3aed;
+  --cm-danger: #dc2626;
+  --cm-warning: #d97706;
+  --cm-surface: #f8fafc;
+  --cm-border: #dbe4f0;
 }
 
 .md-typeset table:not([class]) {
@@ -11,3 +19,206 @@
   border-color: #b45309;
 }
 
+.md-header__title {
+  font-weight: 700;
+}
+
+.md-typeset code {
+  border-radius: 0.28rem;
+  font-weight: 600;
+}
+
+.cm-root-hero,
+.cm-hero {
+  background: linear-gradient(135deg, #e8f1ff 0%, #f8fafc 54%, #fff7ed 100%);
+  border: 1px solid var(--cm-border);
+  border-radius: 1.15rem;
+  margin: 0 0 1.2rem;
+  padding: clamp(1.1rem, 4vw, 2rem);
+}
+
+.cm-root-hero h1,
+.cm-hero h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.05;
+  margin: 0.15rem 0 0.4rem;
+}
+
+.cm-eyebrow {
+  color: var(--md-primary-fg-color);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.cm-hero-subtitle {
+  color: #1e3a8a;
+  font-size: clamp(1.05rem, 3vw, 1.45rem);
+  font-weight: 700;
+  margin: 0.35rem 0;
+}
+
+.cm-hero-bn {
+  color: #334155;
+  font-weight: 600;
+}
+
+.cm-language-grid,
+.cm-card-grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  margin: 1rem 0 1.4rem;
+}
+
+.cm-card,
+.cm-language-card,
+.cm-wide-link,
+.cm-question {
+  border: 1px solid var(--cm-border);
+  border-radius: 0.95rem;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.95rem;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.cm-card:hover,
+.cm-language-card:hover,
+.cm-wide-link:hover,
+.cm-question:hover {
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.cm-card-icon {
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.cm-card-title,
+.cm-language-card strong {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.cm-card-text,
+.cm-language-card span:last-child {
+  color: #475569;
+  font-size: 0.82rem;
+}
+
+.cm-card-badge {
+  align-self: flex-start;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.14rem 0.5rem;
+}
+
+.cm-card--sales .cm-card-badge,
+.cm-card--sales.cm-language-card {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.cm-card--sales .cm-card-badge {
+  background: var(--cm-sales);
+}
+
+.cm-card--production .cm-card-badge,
+.cm-card--production.cm-language-card {
+  background: rgba(234, 88, 12, 0.1);
+}
+
+.cm-card--production .cm-card-badge {
+  background: var(--cm-production);
+}
+
+.cm-card--warehouse .cm-card-badge {
+  background: var(--cm-warehouse);
+}
+
+.cm-card--dyeing .cm-card-badge {
+  background: var(--cm-dyeing);
+}
+
+.cm-card--warning .cm-card-badge {
+  background: var(--cm-warning);
+}
+
+.cm-card--danger .cm-card-badge {
+  background: var(--cm-danger);
+}
+
+.cm-search-entry {
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid var(--md-primary-fg-color);
+  border-radius: 1rem;
+  box-shadow: 0 12px 28px rgba(36, 87, 166, 0.12);
+  color: #1e293b;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-weight: 700;
+  justify-content: flex-start;
+  margin: 1rem 0 1.5rem;
+  min-height: 3.25rem;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.cm-search-entry::before {
+  content: "🔍";
+  font-size: 1.3rem;
+  margin-right: 0.65rem;
+}
+
+.cm-question-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0 1.4rem;
+}
+
+.cm-question {
+  background: #fff;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cm-question small,
+.cm-phase2 {
+  color: #64748b;
+  font-weight: 700;
+}
+
+.cm-wide-link {
+  background: #eef6ff;
+  font-weight: 800;
+  margin: 0.8rem 0 1.5rem;
+}
+
+@media screen and (max-width: 720px) {
+  .cm-language-grid,
+  .cm-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cm-root-hero,
+  .cm-hero {
+    border-radius: 0.85rem;
+  }
+
+  .cm-search-entry {
+    min-height: 3.75rem;
+  }
+}
