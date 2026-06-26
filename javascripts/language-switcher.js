@@ -1,5 +1,5 @@
 (function () {
-  const languages = ["zh", "bn"];
+  const languages = ["zh", "en", "bn"];
 
   function samePageLanguageUrl(targetLanguage) {
     const pathParts = window.location.pathname.split("/");
@@ -37,31 +37,9 @@
       });
   }
 
-  function bindSearchEntry() {
-    document.querySelectorAll("[data-search-trigger]").forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        const search = document.querySelector("[data-md-toggle='search']");
-        if (search) {
-          search.checked = true;
-        }
-
-        window.setTimeout(() => {
-          const input = document.querySelector(".md-search__input");
-          if (input) {
-            input.focus();
-          }
-        }, 80);
-      });
-    });
-  }
-
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-      updateMaterialLanguageLinks();
-      bindSearchEntry();
-    });
+    document.addEventListener("DOMContentLoaded", updateMaterialLanguageLinks);
   } else {
     updateMaterialLanguageLinks();
-    bindSearchEntry();
   }
 })();
